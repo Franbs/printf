@@ -12,33 +12,22 @@
 
 NAME = libftprintf.a
 NAMELIB = ft_printf.h
-LIBFT = libft/libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_printf.c
+SRC = ft_printf.c ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c
 
 SRC_OBJ = $(SRC:.c=.o)
 
-all: libft $(NAME)
+all: $(NAME)
 
-libft:
-	$(MAKE) -C libft
-
-$(NAME): $(SRC_OBJ) $(LIBFT)
-	cp $(LIBFT) $(NAME)
+$(NAME): $(SRC_OBJ)
 	ar rcs $(NAME) $(SRC_OBJ)
 
-cleanlibft:
-	$(MAKE) -C libft clean
-
-fcleanlibft:
-	$(MAKE) -C libft fclean
-
-clean: cleanlibft
+clean: 
 	rm -f $(SRC_OBJ)
 
-fclean: clean fcleanlibft
+fclean: clean 
 	rm -f $(NAME)
 
 re: fclean all

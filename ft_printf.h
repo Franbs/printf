@@ -15,8 +15,10 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-# include "libft/libft.h"
 
-int	ft_printf(char const *, ...);
+int		ft_printf(char const *str, ...);
+void	ft_putchar_fd(char c, int fd, int *count);
+void	ft_putstr_fd(char *s, int fd, int *count);
+void	ft_putnbr_fd(int n, int fd, int *count);
 
 #endif
