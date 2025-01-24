@@ -15,7 +15,8 @@ NAMELIB = ft_printf.h
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_printf.c ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c
+SRC = ft_printf.c ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c \
+ft_puthex_fd.c ft_putptr_fd.c
 
 SRC_OBJ = $(SRC:.c=.o)
 

@@ -20,6 +20,14 @@ void	ft_format(char type, va_list args, int *count)
 		ft_putstr_fd(va_arg(args, char *), 1, count);
 	else if (type == 'd' || type == 'i')
 		ft_putnbr_fd(va_arg(args, int), 1, count);
+	else if (type == 'u')
+		ft_putnbru_fd(va_arg(args, int), 1, count);
+	else if (type == 'p')
+		ft_putptr_fd(va_arg(args, void *), 1, count);
+	else if (type == 'x')
+		ft_puthex_fd(va_arg(args, int), 1, count, HEX_LOW_BASE);
+	else if (type == 'X')
+		ft_puthex_fd(va_arg(args, int), 1, count, HEX_UPP_BASE);
 }
 
 int	ft_printf(char const *str, ...)
@@ -36,14 +44,10 @@ int	ft_printf(char const *str, ...)
 			str++;
 			ft_format(*str, args, &count);
 		}
+		else
+			ft_putchar_fd(*str, 1, &count);
 		str++;
 	}
 	va_end(args);
 	return (count);
-}
-
-int	main(void)
-{
-	ft_printf("Hola %d test %c test2", 20, 'Z');
-	return (0);
 }
