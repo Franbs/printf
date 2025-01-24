@@ -12,6 +12,7 @@
 
 NAME = libftprintf.a
 NAMELIB = ft_printf.h
+LIBFT = libft/libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
@@ -19,16 +20,13 @@ SRC = ft_printf.c
 
 SRC_OBJ = $(SRC:.c=.o)
 
-all: makelib $(NAME)
+all: libft $(NAME)
 
-makelib:
+libft:
 	$(MAKE) -C libft
 
-%.o: %c. $(NAMELIB) Makefile
-	$(CC) $(CFLAGS) -c -o $@ $<
-
-$(NAME): $(SRC_OBJ) Makefile libft/libft.a
-	cp libft/libft.a $(NAME)
+$(NAME): $(SRC_OBJ) $(LIBFT)
+	cp $(LIBFT) $(NAME)
 	ar rcs $(NAME) $(SRC_OBJ)
 
 cleanlibft:
