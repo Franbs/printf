@@ -21,13 +21,13 @@ void	ft_format(char type, va_list args, int *count)
 	else if (type == 'd' || type == 'i')
 		ft_putnbr_fd(va_arg(args, int), 1, count);
 	else if (type == 'u')
-		ft_putnbru_fd(va_arg(args, int), 1, count);
+		ft_putnbru_fd(va_arg(args, unsigned int), 1, count);
 	else if (type == 'p')
 		ft_putptr_fd(va_arg(args, void *), 1, count);
 	else if (type == 'x')
-		ft_puthex_fd(va_arg(args, int), 1, count, HEX_LOW_BASE);
+		ft_puthex_fd(va_arg(args, unsigned int), 1, count, HEX_LOW_BASE);
 	else if (type == 'X')
-		ft_puthex_fd(va_arg(args, int), 1, count, HEX_UPP_BASE);
+		ft_puthex_fd(va_arg(args, unsigned int), 1, count, HEX_UPP_BASE);
 }
 
 int	ft_printf(char const *str, ...)
@@ -42,6 +42,8 @@ int	ft_printf(char const *str, ...)
 		if (*str == '%')
 		{
 			str++;
+			if (*str == '%')
+				ft_putchar_fd('%', 1, &count);
 			ft_format(*str, args, &count);
 		}
 		else

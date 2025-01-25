@@ -6,7 +6,7 @@
 /*   By: fbanzo-s <fbanzo-s@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:20:19 by fbanzo-s          #+#    #+#             */
-/*   Updated: 2025/01/24 20:47:52 by fbanzo-s         ###   ########.fr       */
+/*   Updated: 2025/01/25 16:12:29 by fbanzo-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,15 @@ void	ft_putnbr_fd(int n, int fd, int *count)
 	}
 }
 
-void	ft_putnbru_fd(int n, int fd, int *count)
+void	ft_putnbru_fd(unsigned int n, int fd, int *count)
 {
 	char	c;
 
-	if (n == -2147483648)
-		ft_putstr_fd("-2147483648", fd, count);
-	else
+	if (n >= 10)
 	{
-		if (n < 0)
-			n = -n;
-		if (n >= 10)
-		{
-			ft_putnbru_fd(n / 10, fd, count);
-		}
-		c = (n % 10) + '0';
-		write(fd, &c, 1);
-		(*count)++;
+		ft_putnbru_fd(n / 10, fd, count);
 	}
+	c = (n % 10) + '0';
+	write(fd, &c, 1);
+	(*count)++;
 }

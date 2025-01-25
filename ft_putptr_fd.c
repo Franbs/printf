@@ -12,4 +12,13 @@
 
 #include "ft_printf.h"
 
-
+void	ft_putptr_fd(void *ptr, int fd, int *count)
+{
+	if (!ptr)
+	{
+		ft_putstr_fd("0x0", fd, count);
+		return ;
+	}
+	ft_putstr_fd("0x", fd, count);
+	ft_puthex_fd((unsigned long)ptr, fd, count, HEX_LOW_BASE);
+}

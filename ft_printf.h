@@ -19,13 +19,14 @@
 # define HEX_UPP_BASE "0123456789ABCDEF"
 # define HEX_LOW_BASE "0123456789abcdef"
 
-int		ft_printf(char const *str, ...);
-void	ft_format(char type, va_list args, int *count);
-void	ft_putchar_fd(char c, int fd, int *count);
-void	ft_putstr_fd(char *s, int fd, int *count);
-void	ft_putnbr_fd(int n, int fd, int *count);
-void	ft_putnbru_fd(int n, int fd, int *count);
-void	ft_putptr_fd(void *s, int fd, int *count);
-void	ft_puthex_fd(int nbr, int fd, int *count, char *base);
+int			ft_printf(char const *str, ...);
+size_t		ft_strlen(const char *str);
+void		ft_format(char type, va_list args, int *count);
+void		ft_putchar_fd(char c, int fd, int *count);
+void		ft_putstr_fd(char *s, int fd, int *count);
+void		ft_putnbr_fd(int n, int fd, int *count);
+void		ft_putnbru_fd(unsigned int n, int fd, int *count);
+void		ft_putptr_fd(void *ptr, int fd, int *count);
+void		ft_puthex_fd(unsigned long nbr, int fd, int *count, char *base);
 
 #endif
