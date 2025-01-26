@@ -16,7 +16,7 @@ void	ft_putptr_fd(void *ptr, int fd, int *count)
 {
 	if (!ptr)
 	{
-		ft_putstr_fd("0x0", fd, count);
+		ft_putstr_fd("(nil)", fd, count);
 		return ;
 	}
 	ft_putstr_fd("0x", fd, count);
